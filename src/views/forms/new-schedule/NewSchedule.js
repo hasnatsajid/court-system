@@ -81,7 +81,10 @@ function NewSchedule() {
         </div>
         <hr />
         <br />
+
+       
             <div  >
+          
             <div className="date-tabs">
                 <input className="form-group col-md-8.5 tabs" type="text" placeholder="Add Title"  value={newEvent.title} onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} />
                 <DatePicker className="tabs" placeholderText="Start Date"  selected={newEvent.start} onChange={(start) => setNewEvent({ ...newEvent, start })} />
@@ -91,6 +94,20 @@ function NewSchedule() {
                     Add Event
                 </button>
             </div>
+            <br />
+            
+            <div className="form-group col-md-8 lawyer-tab">
+          <label>Lawyer</label>
+          <input
+          style={{padding:"8px", border:"1px strong black", borderRadius: "10px", padding: "8px"}}
+          value=""
+            type="text"
+            className="form-control "
+            name="lawyer"
+            placeholder="Search your lawyer here "
+          />
+        </div>
+        <br />
             <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
         </div>
     );

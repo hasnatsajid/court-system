@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const NewTask = () => {
   const [checked, setChecked] = useState(false);
-  const [text, setText] = useState("");
+  const [text, setText] = useState({});
 
   const onValueChange = (e) => {
     const val = e.target.value;
@@ -19,9 +19,10 @@ const NewTask = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setChecked({ ...checked });
-    console.log(checked);
+    setText({ text });
+    console.log(text);
   };
+
 
   // const onValueChange = (e) => {
   //   const val = e.target.value;
@@ -29,6 +30,19 @@ const NewTask = () => {
   const onTextChange = (e) => {
     const val = setText(e.target.value);
   };
+
+
+
+const onChangeChecked=() => {
+              if (checked) {
+                setText("");
+              }
+              setChecked(!checked);
+            }
+
+
+
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -43,7 +57,7 @@ const NewTask = () => {
           <input
             className="form-check-input"
             type="checkbox"
-            value={"Legal Advice"}
+            value="Legal Advice"
           />
           <label className="form-check-label">Legal Advice</label>
         </div>
@@ -53,7 +67,7 @@ const NewTask = () => {
           <input
             className="form-check-input"
             type="checkbox"
-            value={"Legal Documentation"}
+            value="Legal Documentation"
           />
           <label className="form-check-label">Legal Documentation</label>
           <br />
@@ -71,7 +85,7 @@ const NewTask = () => {
           <input
             className="form-check-input"
             type="checkbox"
-            value={"Legal Representation"}
+            value="Legal Representation"
           />
           <br />
           <input
@@ -112,7 +126,7 @@ const NewTask = () => {
           <input
             className="form-check-input"
             type="checkbox"
-            value={"Inquest Assistance"}
+            value="Inquest Assistance"
           />
           <label className="form-check-label">Inquest Assistance</label>
           <br />
@@ -149,20 +163,15 @@ const NewTask = () => {
             type="checkbox"
             value="Meditation"
             checked={checked}
-            onChange={() => {
-              if (checked) {
-                setText("");
-              }
-              setChecked(!checked);
-            }}
+            onChange={onChangeChecked}
           />
           <br />
           <input
             type="text"
             name="Meditation - parties"
             disabled={!checked}
-            value={text}
-            onChange={onTextChange}
+      
+            onChange={onValueChange}
             className="form-control"
             placeholder="Parties"
           />
@@ -172,7 +181,8 @@ const NewTask = () => {
           <input
             className="form-check-input"
             type="checkbox"
-            value={"Administered Oath"}
+            value="Administered Oath"
+            
           />
           <label className="form-check-label">Administered Oath</label>
           <br />
@@ -189,7 +199,7 @@ const NewTask = () => {
           <input
             className="form-check-input"
             type="checkbox"
-            value={"Others"}
+            value="Others"
           />
           <label className="form-check-label">Others</label>
         </div>
@@ -198,7 +208,7 @@ const NewTask = () => {
       <button type="submit" className="btn btn-primary save-btn">
         Save
       </button>
-      <button className="btn btn-success task-btn">New task</button>
+      <button className="btn btn-success task-btn" style={{marginLeft: "10px"}}>New task</button>
     </form>
   );
 };
